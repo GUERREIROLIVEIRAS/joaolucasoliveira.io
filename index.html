@@ -1,0 +1,693 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Lucas Oliveira | Psicólogo CRP 21/06532</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      :root {
+        --verde-azulado: #4ecdc4;
+        --roxo-suave: #8e44ad;
+        --azul-profundo: #3498db;
+        --cinza-claro: #f8f9fa;
+        --cinza-medio: #e9ecef;
+        --cinza-escuro: #343a40;
+        --branco: #ffffff;
+        --preto: #212529;
+        --gradiente-suave: linear-gradient(135deg, var(--verde-azulado), var(--roxo-suave));
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+      body {
+        background-color: var(--cinza-claro);
+        color: var(--preto);
+        line-height: 1.7;
+        overflow-x: hidden;
+        font-size: 1.1rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      .hero {
+        background: var(--gradiente-suave);
+        color: var(--branco);
+        padding: 5rem 1rem 8rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+        padding-top: 2rem;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        letter-spacing: -0.5px;
+      }
+
+      .subtitle {
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 2.5rem;
+        opacity: 0.95;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      .scroll-down {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--branco);
+        font-size: 2.5rem;
+        animation: bounce 2s infinite;
+        cursor: pointer;
+      }
+
+      @keyframes bounce {
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0) translateX(-50%);
+        }
+
+        40% {
+          transform: translateY(-20px) translateX(-50%);
+        }
+
+        60% {
+          transform: translateY(-10px) translateX(-50%);
+        }
+      }
+
+      section {
+        padding: 6rem 1.5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      section:nth-child(even) {
+        background-color: var(--branco);
+      }
+
+      h2 {
+        color: var(--roxo-suave);
+        margin-bottom: 2.5rem;
+        font-size: 2.5rem;
+        position: relative;
+        padding-bottom: 1rem;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: var(--gradiente-suave);
+        border-radius: 2px;
+      }
+
+      h3 {
+        color: var(--roxo-suave);
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+      }
+
+      p {
+        margin-bottom: 1.8rem;
+        font-size: 1.2rem;
+        color: var(--preto);
+        line-height: 1.8;
+      }
+
+      .highlight {
+        background-color: rgba(155, 89, 182, 0.08);
+        padding: 2.5rem;
+        border-radius: 12px;
+        border-left: 4px solid var(--roxo-suave);
+        margin: 2.5rem 0;
+        font-size: 1.2rem;
+      }
+
+      .about-container {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        margin-top: 3rem;
+      }
+
+      .about-photo {
+        flex: 1;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .about-photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .about-photo:hover img {
+        transform: scale(1.05);
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .services {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        margin-top: 4rem;
+      }
+
+      .service-card {
+        background: var(--branco);
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--gradiente-suave);
+        transition: height 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-card:hover::before {
+        height: 10px;
+      }
+
+      .service-icon {
+        font-size: 3.5rem;
+        color: var(--roxo-suave);
+        margin-bottom: 1.8rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--roxo-suave);
+        color: var(--branco);
+        padding: 1.2rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        margin-top: 1.5rem;
+        box-shadow: 0 6px 20px rgba(155, 89, 182, 0.3);
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        font-size: 1.1rem;
+      }
+
+      .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: var(--verde-azulado);
+        transition: width 0.3s;
+        z-index: -1;
+      }
+
+      .btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(155, 89, 182, 0.4);
+      }
+
+      .btn:hover::before {
+        width: 100%;
+      }
+
+      .btn i {
+        margin-right: 0.8rem;
+        font-size: 1.2rem;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--roxo-suave);
+        color: var(--roxo-suave);
+        box-shadow: none;
+      }
+
+      .btn-outline::before {
+        background-color: var(--roxo-suave);
+      }
+
+      .btn-outline:hover {
+        color: var(--branco);
+      }
+
+      .approach-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+      }
+
+      .approach-item {
+        background: var(--cinza-medio);
+        padding: 2rem;
+        border-radius: 12px;
+        transition: transform 0.3s;
+        text-align: center;
+      }
+
+      .approach-item:hover {
+        transform: translateY(-10px);
+        background: var(--branco);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .approach-icon {
+        font-size: 2.5rem;
+        color: var(--roxo-suave);
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-container {
+        display: flex;
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .contact-info {
+        flex: 1;
+        background: var(--cinza-medio);
+        padding: 2.5rem;
+        border-radius: 16px;
+      }
+
+      .contact-info h3 {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.8rem;
+      }
+
+      .contact-icon {
+        font-size: 1.8rem;
+        color: var(--roxo-suave);
+        margin-right: 1.2rem;
+        min-width: 40px;
+      }
+
+      .contact-text {
+        flex: 1;
+      }
+
+      .contact-text h4 {
+        margin-bottom: 0.5rem;
+        color: var(--roxo-suave);
+      }
+
+      .contact-text a {
+        color: var(--preto);
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 1.2rem;
+      }
+
+      .contact-text a:hover {
+        color: var(--roxo-suave);
+        text-decoration: underline;
+      }
+
+      .contact-text p {
+        color: var(--preto);
+        font-size: 1.2rem;
+      }
+
+      .contact-image {
+        flex: 1;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .contact-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .contact-image:hover img {
+        transform: scale(1.05);
+      }
+
+      footer {
+        background: var(--cinza-escuro);
+        color: var(--branco);
+        padding: 4rem 1rem 2rem;
+        text-align: center;
+        margin-top: 4rem;
+      }
+
+      .footer-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .social-links {
+        margin: 2rem 0;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        margin: 0 0.8rem;
+        color: var(--branco);
+        transition: all 0.3s;
+        font-size: 1.5rem;
+      }
+
+      .social-links a:hover {
+        background-color: var(--verde-azulado);
+        color: var(--cinza-escuro);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
+        margin-top: 2.5rem;
+        padding-top: 2.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        font-size: 1rem;
+        opacity: 0.8;
+        color: var(--branco);
+      }
+
+      .contact-text p {
+        color: var(--preto);
+      }
+
+      @media (max-width: 992px) {
+
+        .about-container,
+        .approach-container,
+        .contact-container {
+          flex-direction: column;
+          grid-template-columns: 1fr;
+        }
+
+        .about-photo {
+          max-width: 500px;
+          margin: 0 auto;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        .subtitle {
+          font-size: 1.4rem;
+        }
+
+        .hero {
+          padding: 3rem 1rem 6rem;
+          clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+        }
+
+        .services {
+          grid-template-columns: 1fr;
+        }
+
+        .btn {
+          width: 100%;
+          text-align: center;
+        }
+
+        .contact-image {
+          height: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-content">
+        <h1>João Lucas Oliveira</h1>
+        <p class="subtitle">Psicólogo CRP 21/06532 | Atendimento Online</p>
+        <div class="links">
+          <a href="https://wa.me/5586974006648" class="btn">
+            <i class="fab fa-whatsapp"></i> Agendar Consulta </a>
+          <a href="#sobre" class="btn btn-outline">
+            <i class="fas fa-user"></i> Conheça o Profissional </a>
+        </div>
+      </div>
+      <div class="scroll-down" onclick="document.getElementById('sobre').scrollIntoView({behavior: 'smooth'})">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </header>
+    <main>
+      <!-- Sobre mim -->
+      <section id="sobre">
+        <h2>Sobre mim</h2>
+        <div class="about-container">
+          <div class="about-photo">
+            <!-- EDITAR ESTA FOTO: substitua "20250529_145243.jpg" pelo nome do seu novo arquivo -->
+            <img src="pe.jpg" alt="João Lucas Oliveira - Psicólogo">
+          </div>
+          <div class="about-text">
+            <p>Sou João Lucas Oliveira, psicólogo clínico com experiência no atendimento de adolescentes, adultos e idosos. Minha prática é fundamentada na Gestalt-terapia, uma abordagem que valoriza a experiência presente e a relação terapêutica autêntica.</p>
+            <div class="highlight">
+              <p>Tenho experiência no atendimento de pessoas LGBTQIA+, criando um espaço seguro e acolhedor para explorar questões de identidade, relacionamentos e autoconhecimento. Minha atuação é pautada no respeito à diversidade e na promoção da saúde mental para todos.</p>
+            </div>
+            <p>Atuo exclusivamente de forma online, oferecendo flexibilidade de horários e a comodidade de realizar suas sessões no conforto do seu espaço seguro. Meu compromisso é acompanhar você em seu processo de crescimento pessoal com profissionalismo e sensibilidade.</p>
+          </div>
+        </div>
+      </section>
+      <!-- Serviços -->
+      <section id="servicos" style="background-color: var(--cinza-medio);">
+        <h2>Psicoterapia</h2>
+        <p class="text-center" style="max-width: 800px; margin: 0 auto 2rem; font-size: 1.3rem;">Um processo psicoterapêutico personalizado para atender suas necessidades específicas</p>
+        <div class="services">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-user-friends"></i>
+            </div>
+            <h3>Atendimento Personalizado</h3>
+            <p>Ofereço um espaço seguro e acolhedor para trabalhar questões emocionais, relacionamentos, autoconhecimento e desenvolvimento pessoal.</p>
+            <p>Trabalhamos juntos para identificar padrões, desenvolver recursos internos e promover mudanças significativas em sua vida, sempre com respeito ao seu ritmo e singularidade.</p>
+            <a href="https://wa.me/5586974006648" class="btn">
+              <i class="fas fa-calendar-check"></i> Agendar Sessão </a>
+          </div>
+        </div>
+      </section>
+      <!-- Abordagem -->
+      <section id="abordagem">
+        <h2>Gestalt-terapia: Minha Abordagem</h2>
+        <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; font-size: 1.3rem;">Uma abordagem que valoriza a experiência presente e a relação autêntica</p>
+        <div class="approach-container">
+          <div class="approach-item">
+            <div class="approach-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3>Foco no Presente</h3>
+            <p>A Gestalt-terapia trabalha com o "aqui e agora", valorizando a experiência presente. Isso permite uma compreensão mais imediata e vivencial dos processos emocionais, ajudando você a se conectar com suas necessidades atuais.</p>
+          </div>
+          <div class="approach-item">
+            <div class="approach-icon">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3>Relação Autêntica</h3>
+            <p>A relação terapêutica é a base do trabalho. Buscamos estabelecer um vínculo genuíno e transparente, onde você se sinta seguro para explorar suas experiências sem julgamentos.</p>
+          </div>
+          <div class="approach-item">
+            <div class="approach-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3>Consciência e Responsabilidade</h3>
+            <p>Ampliamos sua consciência sobre pensamentos, sentimentos e comportamentos, promovendo maior responsabilidade sobre suas escolhas e caminhos de vida. Você é o agente ativo de sua transformação.</p>
+          </div>
+        </div>
+        <div class="highlight" style="margin-top: 3rem;">
+          <p>A Gestalt-terapia é uma abordagem fenomenológica que entende o ser humano em sua totalidade, considerando aspectos corporais, emocionais, cognitivos e relacionais. Trabalhamos com experimentos e técnicas vivenciais que facilitam o autoconhecimento e a mudança.</p>
+        </div>
+      </section>
+      <!-- Contato -->
+      <section id="contato" style="background-color: var(--cinza-medio);">
+        <h2>Entre em Contato</h2>
+        <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; font-size: 1.3rem;">Estou disponível para responder suas dúvidas e agendar uma primeira conversa. Sinta-se à vontade para entrar em contato pelos canais abaixo:</p>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Informações de Contato</h3>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <div class="contact-text">
+                <h4>WhatsApp</h4>
+                <a href="https://wa.me/5586974006648">(86) 97400-6648</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <a href="mailto:psicjoaol@gmail.com">psicjoaol@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Horário de Atendimento</h4>
+                <p>Segunda a Sexta: 8h às 20h <br>Sábado: 8h às 12h </p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-video"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Modalidade</h4>
+                <p>Atendimento exclusivamente online por videoconferência</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-image">
+            <!-- EDITAR ESTA FOTO: substitua "IMG_20241221_104532_063.jpg" pelo nome do seu novo arquivo -->
+            <img src="contato1.jpg" alt="Agende sua consulta online">
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <h3>João Lucas Oliveira</h3>
+        <p>Psicólogo - CRP 21/06532</p>
+        <div class="social-links">
+          <a href="https://wa.me/5586974006648">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="mailto:psicjoaol@gmail.com">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://www.instagram.com/joaolucasoliveirasc">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 João Lucas Oliveira - CRP 21/06532 - Todos os direitos reservados</p>
+          <p>Atendimento psicológico online com qualidade e respeito</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Efeito de scroll suave para as seções
+      document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+        sections.forEach(section => {
+          observer.observe(section);
+        });
+        // Suaviza o scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
